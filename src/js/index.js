@@ -15,5 +15,6 @@
 //   render: (h) => h(App)
 // }).$mount('#app')
 
-console.info('=======111111======')
+import axios from 'axios'
+console.info('=======111111======', axios)
 window.abc = 6666

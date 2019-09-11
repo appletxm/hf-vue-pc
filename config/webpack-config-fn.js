@@ -39,39 +39,16 @@ module.exports = {
     return webpackConfig
   },
 
-  getCommonPluginConfig: function (envKeyWord, webpack, webpackConfig, env) {
-    const nodeEnv = envKeyWord === 'test' || envKeyWord === 'production' ? 'production' : 'development'
-
-    webpackConfig.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: nodeEnv
-        }
-      }),
-
-      new CopyPlugin([{
-        from: path.resolve(env.sourcePath + '/assets'),
-        to: path.resolve(env.distPath + '/assets')
-      }])
-    )
-    return webpackConfig
-  },
-
   getOptimizationConfig: function (envKeyWord, env, webpackConfig) {
-    var vendorPath, cssPath
     const isDev = envKeyWord === 'development' || envKeyWord === 'mock'
     let optimization
 
     if (isDev === true) {
-      vendorPath = 'js/vendor.js'
-      cssPath = 'css/[name].css'
       optimization = {
         namedModules: true,
         namedChunks: true
       }
     } else {
-      vendorPath = 'js/vendor.min.[chunkhash:7].js'
-      cssPath = 'css/[name].min.[contenthash:7].css'
       optimization = {
         minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
         providedExports: true,
@@ -98,9 +75,9 @@ module.exports = {
             enforce: true,
           },
           vendor: {
-            // fileName: vendorPath,
             name: 'vendor',
-            chunks: 'all',
+            chunks: 'initial',
+            test: /axios/,
             priority: -10
           }
         }
@@ -112,6 +89,24 @@ module.exports = {
 
     webpackConfig.optimization = optimization
 
+    return webpackConfig
+  },
+
+  getCommonPluginConfig: function (envKeyWord, webpack, webpackConfig, env) {
+    const nodeEnv = envKeyWord === 'test' || envKeyWord === 'production' ? 'production' : 'development'
+
+    webpackConfig.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: nodeEnv
+        }
+      }),
+
+      new CopyPlugin([{
+        from: path.resolve(env.sourcePath + '/assets'),
+        to: path.resolve(env.distPath + '/assets')
+      }])
+    )
     return webpackConfig
   },
 
@@ -166,8 +161,7 @@ module.exports = {
         filename: path.resolve(env.distPath + '/app.html'),
         template: path.resolve(env.sourcePath + '/index.html'),
         chunks: ['vendor', 'app'],
-        needViewPort: false,
-        chunksSortMode: 'none'
+        needViewPort: false
       }))
     )
 
