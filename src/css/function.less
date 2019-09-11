@@ -1,0 +1,78 @@
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+     transition: @transition;
+}
+
+.text-ellipsis{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.transform(@deg){
+  transform: rotate(@deg);
+  -ms-transform: rotate(@deg); 	/* IE 9 */
+  -moz-transform: rotate(@deg); 	/* Firefox */
+  -webkit-transform: rotate(@deg); /* Safari 和 Chrome */
+  -o-transform: rotate(@deg);
+}
+
+.animate(@animate){
+  animation: @animate;
+  -webkit-animation: @animate; /* Safari 和 Chrome */
+}
+
+.input-style{
+	font-size: @font-xs;
+	line-height: .18rem;
+	position: absolute;
+	top:0;
+	left:0;
+	width: 98%;
+  height: 100%;
+  border: 0;
+  outline: none;
+  font-family: @font-family;
+  .transition(all 0.6s ease);
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixed-position{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.absolute-position{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.position-absolute-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.box-shadow(@shadow){
+  box-shadow: @shadow;
+  -webkit-box-shadow: @shadow; /* Safari 和 Chrome */
+}

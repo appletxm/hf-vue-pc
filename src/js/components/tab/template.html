@@ -1,0 +1,7 @@
+<ul class="yd-ui-tab">
+  <li v-for="(item, index) in tabData" :key="item.id" v-bind:class="[currentIndex ===  index ? 'selected' : '']" @click="$toggleTab(index)">
+    <hr class="middle-line "></hr>
+    <span>{{ item.name}}</span>
+    <slot :item="item">extract</slot>
+  </li>
+</ul>

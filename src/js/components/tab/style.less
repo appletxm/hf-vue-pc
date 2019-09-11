@@ -1,0 +1,55 @@
+@tab-scale: 0.55;
+.yd-ui-tab {
+  // display: flex;
+  // display: -webkit-flex;
+  // background-color: white;
+  // padding: 0;
+  // margin: 0;
+  // border-bottom: 1px solid @gray-dark;
+  // list-style: none;
+  // font-size: @font-s;
+  // height: @tab-height;
+  // line-height: @tab-height;
+  font-family: @font-family;
+  display: flex;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.90); // border: 1px solid rgba(57, 35, 123, 0.02);
+  height: .42rem;
+  line-height: .42rem;
+  font-size: @font-24 * @tab-scale;
+  .box-shadow(0 4px 12px 0 rgba(57, 35, 123, 0.20));
+  .border-radius(@border-radious);
+  li:first-child {
+    .middle-line {
+      display: none;
+    }
+  }
+  li {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+    .border-radius(@border-radious);
+    .middle-line {
+      height: .6rem * @tab-scale;
+      width: 1px;
+      background: @gray-light-l;
+      float: left;
+      position: relative;
+      top: .06rem;
+      border: none;
+    }
+    span {
+      display: inline-block;
+      position: relative;
+      padding: 0 .04rem;
+      color: @blue-gray-light-l;
+      letter-spacing: 0;
+    }
+    &.selected {
+      span {
+        color: @blue-gray;
+      }
+    }
+  }
+}

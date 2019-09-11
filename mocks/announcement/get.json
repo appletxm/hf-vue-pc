@@ -1,0 +1,23 @@
+{
+  "code": "200",
+  "message": "操作成功",
+  "detailMessage": null,
+  "data": [
+    {
+      "id": 1,
+      "announcement": "test"
+    },
+    {
+      "id": 2,
+      "announcement": "test test 22222222222"
+    },
+    {
+      "id": 3,
+      "announcement": "test test 655555555555"
+    },
+    {
+      "id": 5,
+      "announcement": "test test 8888888888"
+    }
+  ]
+}
