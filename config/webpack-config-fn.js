@@ -96,25 +96,7 @@ module.exports = {
     return webpackConfig
   },
 
-  getCommonPluginConfig: function (envKeyWord, webpack, webpackConfig, env) {
-    const nodeEnv = envKeyWord === 'test' || envKeyWord === 'production' ? 'production' : 'development'
-
-    webpackConfig.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: nodeEnv
-        }
-      }),
-
-      new CopyPlugin([{
-        from: path.resolve(env.sourcePath + '/assets'),
-        to: path.resolve(env.distPath + '/assets')
-      }])
-    )
-    return webpackConfig
-  },
-
-  getEnvPluginConfig: function (envKeyWord, webpack, webpackConfig) {
+  getPluginConfig: function (envKeyWord, webpack, webpackConfig, env) {
     var cssPath, cssChunkPath
     const isDev = envKeyWord === 'development' || envKeyWord === 'mock'
 
@@ -134,6 +116,11 @@ module.exports = {
     }
 
     webpackConfig.plugins.push(
+      new CopyPlugin([{
+        from: path.resolve(env.sourcePath + '/assets'),
+        to: path.resolve(env.distPath + '/assets')
+      }]),
+      
       new MiniCssExtractPlugin({
         filename: cssPath,
         chunkFilename: cssChunkPath

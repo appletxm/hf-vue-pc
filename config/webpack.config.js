@@ -19,8 +19,7 @@ webpackConfig = require('./webpack-config-base')(envKeyWord, env)
 webpackConfig['resolve']['alias']['env.cfg'] = webpackFn.getEnvCfg(envKeyWord)
 webpackConfig = webpackFn.getOutPutConfig(envKeyWord, env, webpackConfig)
 webpackConfig = webpackFn.getOptimizationConfig(envKeyWord, env, webpackConfig)
-webpackConfig = webpackFn.getCommonPluginConfig(envKeyWord, webpack, webpackConfig, env)
-webpackConfig = webpackFn.getEnvPluginConfig(envKeyWord, webpack, webpackConfig)
+webpackConfig = webpackFn.getPluginConfig(envKeyWord, webpack, webpackConfig, env)
 webpackConfig = webpackFn.getHtmlWebPluginConfig(env, webpackConfig)
 
 module.exports = webpackConfig
