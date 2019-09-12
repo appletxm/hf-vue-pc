@@ -64,34 +64,32 @@ module.exports = {
         concatenateModules: true,
         noEmitOnErrors: true,
         splitChunks: {
-          minSize: 30000, //模块大于30k会被抽离到公共模块
-          minChunks: 1, //模块出现1次就会被抽离到公共模块
-          maxAsyncRequests: 5, //异步模块，一次最多只能被加载5个
-          maxInitialRequests: 3, //入口模块最多只能加载3个
+          minSize: 30000,
+          minChunks: 1,
+          maxAsyncRequests: 5,
+          maxInitialRequests: 3,
           name: true,
+          chunks: 'all',
+          cacheGroups: {
+            styles: {
+              name: 'styles',
+              test: /\.(scss|css)$/,
+              chunks: 'all',
+              enforce: true,
+            },
+            vendor: {
+              name: 'vendor',
+              chunks: 'all',
+              test: /axios/,
+              priority: -10
+            }
+          }
+        },
+        runtimeChunk: {
+          name: 'runtime'
         }
       }
     }
-
-    optimization = Object.assign(optimization, {
-      splitChunks: {
-        chunks: 'all',
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(scss|css)$/,
-            chunks: 'all',
-            enforce: true,
-          },
-          vendor: {
-            name: 'vendor',
-            chunks: 'all',
-            test: /axios/,
-            priority: -10
-          }
-        }
-      }
-    })
 
     webpackConfig.optimization = optimization
 
@@ -159,8 +157,8 @@ module.exports = {
       new HtmlWebPlugin(Object.assign(baseConfig, {
         title: '我是首页',
         filename: path.resolve(env.distPath + '/app.html'),
-        template: path.resolve(env.sourcePath + '/index.html'),
-        chunks: ['vendor', 'app'],
+        template: path.resolve(env.sourcePath + '/index.ejs'),
+        chunks: ['vendor', 'runtime', 'app'],
         inject: 'body',
         needViewPort: false,
         inject: 'body',

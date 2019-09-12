@@ -1,9 +1,9 @@
 # A Incubator Project For PC
 ### Technology Stack
-> javascript: vuejs + vue-router + vuex
-> css preprocess: scss
-> basic ui components: element-ui
-> build: webpack
+> javascript: vuejs + vue-router + vuex <br/>
+> css preprocess: scss <br/>
+> basic ui components: element-ui <br/>
+> build: webpack <br/>
 
 ### Intall and config
 #### Install Taobao image registory
