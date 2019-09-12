@@ -3,12 +3,13 @@ const {
   routerRootPath,
   routerUploadSingleFile,
   routerImgPath,
-  routerHtmlPath
+  routerHtmlPath,
+  routerJsFile
 } = require('./server-router-handle')
 
 const serverRouter = {
   '*': function (req, res, next) {
-    console.info('[req info]', req.path, req.baseUrl, req.params)
+    console.info(`HTTP [${req.method}]`, req.path, req.baseUrl, req.params)
     next()
   },
 
@@ -23,6 +24,8 @@ const serverRouter = {
   'html': routerHtmlPath,
 
   'image': routerImgPath,
+
+  'js': routerJsFile,
 
   'uploadSingleFile': routerUploadSingleFile
 }

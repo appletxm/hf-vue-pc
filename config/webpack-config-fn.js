@@ -30,7 +30,7 @@ module.exports = {
 
     if (isDev === true) {
       webpackConfig.entry.app = [hotMiddlewareScript, appJs]
-      webpackConfig.devtool = 'source-map'
+      webpackConfig.devtool = 'inline-source-map'
     } else {
       webpackConfig.entry.app = [appJs]
       webpackConfig.devtool = 'cheap-source-map'
@@ -51,9 +51,13 @@ module.exports = {
     } else {
       optimization = {
         minimize: true,
-        minimizer: [new TerserJSPlugin({
-          extractComments: '/@extract/i'
-        }), new OptimizeCSSAssetsPlugin()],
+        minimizer: [
+          new TerserJSPlugin({
+            extractComments: '/@extract/i',
+            sourceMap: true
+          }), 
+          new OptimizeCSSAssetsPlugin()
+        ],
         providedExports: true,
         usedExports: true,
         sideEffects: true,
@@ -65,9 +69,6 @@ module.exports = {
           maxAsyncRequests: 5, //异步模块，一次最多只能被加载5个
           maxInitialRequests: 3, //入口模块最多只能加载3个
           name: true,
-        },
-        runtimeChunk: {
-          name: 'runtime'
         }
       }
     }
@@ -84,7 +85,7 @@ module.exports = {
           },
           vendor: {
             name: 'vendor',
-            chunks: 'initial',
+            chunks: 'all',
             test: /axios/,
             priority: -10
           }
@@ -135,12 +136,6 @@ module.exports = {
     }
 
     webpackConfig.plugins.push(
-      // new webpack.optimize.CommonsChunkPlugin({
-      //   name: 'vendor',
-      //   filename: vendorPath,
-      //   minChunks: Infinity
-      // }),
-      
       new MiniCssExtractPlugin({
         filename: cssPath,
         chunkFilename: cssChunkPath
@@ -166,7 +161,14 @@ module.exports = {
         filename: path.resolve(env.distPath + '/app.html'),
         template: path.resolve(env.sourcePath + '/index.html'),
         chunks: ['vendor', 'app'],
-        needViewPort: false
+        inject: 'body',
+        needViewPort: false,
+        inject: 'body',
+        publicPath: env.publicPath,
+        libFiles: {
+          css: [],
+          js: []
+        }
       }))
     )
 

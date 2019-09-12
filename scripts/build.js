@@ -1,10 +1,11 @@
 const rm = require('rimraf')
-const webpackConfig = require('../config/webpack-config')
+const webpackConfig = require('../config/webpack.config')
 const ora = require('ora')
 const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const distOperations = require('./release-dist-operations')
+const fs = require('fs')
 
 function build () {
   var spinner = ora('building for production...')
@@ -22,6 +23,8 @@ function build () {
         spinner.stop()
         throw err
       }
+
+      fs.writeFileSync("stats.json", JSON.stringify(stats.toJson()))
 
       if (process.argv && process.argv[4] === 'current-branch') {
         spinner.stop()

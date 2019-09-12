@@ -4,7 +4,7 @@ var webpackFn = require('./webpack-config-fn')
 var envConfig = require('./env')
 var envKeyWord = (process.argv)[2]
 var env = envConfig[envKeyWord]
-var publicPath = env.publicPath
+// var publicPath = env.publicPath
 var sourcePath, distPath
 var webpackConfig
 
@@ -12,7 +12,8 @@ process.env.NODE_ENV = envKeyWord
 sourcePath = path.join(__dirname, env.sourcePath)
 distPath = path.join(__dirname, env.distPath)
 
-console.info('***current env***', envKeyWord, 'sourcePath:', sourcePath, 'distPath:', distPath)
+console.info('***current env***', envKeyWord)
+console.info('sourcePath: ', sourcePath, 'distPath: ', distPath)
 
 webpackConfig = require('./webpack-config-base')(envKeyWord, env)
 webpackConfig['resolve']['alias']['env.cfg'] = webpackFn.getEnvCfg(envKeyWord)

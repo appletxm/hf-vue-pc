@@ -16,5 +16,9 @@
 // }).$mount('#app')
 
 import axios from 'axios'
+
+alert('--------------------------')
+
 console.info('=======111111======', axios)
+console.info('====33333===')
 window.abc = 6666

@@ -3,9 +3,6 @@ import auth from 'common/auth'
 import globals from 'common/globals'
 import { NEED_SHOW_LOGIN_POP } from 'store/mutation-types'
 
-const TOKEN_INVALID = '您已经离开我太久了，请重新登录'
-const HOME_PAGE = ['/', '#/', '#/home', '#/home/']
-
 export const handleTokenExpired = function (resData) {
   if (globals.store.state.isHandingExpired !== true) {
     globals.store.commit(NEED_SHOW_LOGIN_POP, true)

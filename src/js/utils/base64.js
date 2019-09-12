@@ -1,5 +1,5 @@
 /* eslint-disable */
-var Base64 = {
+const Base64 = {
 
   // private property
   _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -130,5 +130,4 @@ var Base64 = {
 }
 
 export default Base64
-
 /* eslint-enable */

@@ -151,9 +151,8 @@ function getHtmlFile(compiler, filename, res, next) {
     } else {
       res.set('content-type', 'text/html')
       res.send(result)
+      res.end()
     }
-    res.end()
-
     if (next) {
       next()
     }
@@ -180,10 +179,30 @@ function getImageFile(compiler, filename, res, next) {
   })
 }
 
+function getJsFile(compiler, filename, res, next) {
+  var newFs = compiler ? compiler.outputFileSystem : fs
+
+  console.info('[get js path]', filename)
+
+  newFs.readFile(filename, function (err, result) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.set('content-type', 'application/x-javascript')
+      res.send(result)
+    }
+    res.end()
+
+    if (next) {
+      next()
+    }
+  })
+}
+
 function routerRootPath(req, res, compiler) {
   // TODO compiler.outputPath is equal to the webpack publickPath
-  var filename = path.join(compiler.outputPath, 'index.html')
-  // console.info('####', compiler.outputPath, path.join(compiler.outputPath, 'index.html'))
+  var filename = path.join(compiler.outputPath, 'app.html')
+  // console.info('####', compiler.outputPath, path.join(compiler.outputPath, 'app.html'))
   getHtmlFile(compiler, filename, res)
 }
 
@@ -213,6 +232,11 @@ function routerHtmlPath(req, res, compiler) {
   getHtmlFile(compiler, filename, res)
 }
 
+function routerJsFile(req, res, compiler) {
+  var filename = path.join(compiler.outputPath, req.baseUrl.replace('/', ''))
+  getJsFile(compiler, filename, res)
+}
+
 module.exports = {
   getMockFile,
   getProxyConfig,
@@ -221,5 +245,6 @@ module.exports = {
   routerRootPath,
   routerUploadSingleFile,
   routerImgPath,
-  routerHtmlPath
+  routerHtmlPath,
+  routerJsFile
 }

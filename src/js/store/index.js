@@ -3,16 +3,9 @@ import * as consts from './mutation-types'
 
 const store = new Vuex.Store({
   state: {
-    userInfo: {
+    announcement: {
       userId: ''
-    },
-    needShowLoginPop: false,
-    currentModule: 'Home', // app modules which matched with the navigator, include 'Home, Search, My',
-    showNavigator: true,
-    loginMethod: 1, // 0 page 1 pop,
-    isUserLogin: false,
-    isHandingExpired: false,
-    resetPassToken: ''
+    }
   },
 
   getters: {},

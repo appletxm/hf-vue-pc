@@ -6,9 +6,10 @@ module.exports = {
     host: '127.0.0.1',
     port: '9000'
   },
-  get publicPath() {
-    return 'http://' + this.host + ':' + this.port + '/dist/'
-  },
+  // get publicPath() {
+  //   return 'http://' + this.host + ':' + this.port + '/dist/'
+  // },
+  publicPath: '',
   distPath: './dist',
   sourcePath: './src'
 }
