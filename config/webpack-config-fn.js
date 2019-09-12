@@ -50,23 +50,31 @@ module.exports = {
       }
     } else {
       optimization = {
-        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+        minimize: true,
+        minimizer: [new TerserJSPlugin({
+          extractComments: '/@extract/i'
+        }), new OptimizeCSSAssetsPlugin()],
         providedExports: true,
         usedExports: true,
         sideEffects: true,
         concatenateModules: true,
-        noEmitOnErrors: true
+        noEmitOnErrors: true,
+        splitChunks: {
+          minSize: 30000, //模块大于30k会被抽离到公共模块
+          minChunks: 1, //模块出现1次就会被抽离到公共模块
+          maxAsyncRequests: 5, //异步模块，一次最多只能被加载5个
+          maxInitialRequests: 3, //入口模块最多只能加载3个
+          name: true,
+        },
+        runtimeChunk: {
+          name: 'runtime'
+        }
       }
     }
 
     optimization = Object.assign(optimization, {
       splitChunks: {
         chunks: 'all',
-        minSize: 30000, //模块大于30k会被抽离到公共模块
-        minChunks: 1, //模块出现1次就会被抽离到公共模块
-        maxAsyncRequests: 5, //异步模块，一次最多只能被加载5个
-        maxInitialRequests: 3, //入口模块最多只能加载3个
-        name: true,
         cacheGroups: {
           styles: {
             name: 'styles',
@@ -81,9 +89,6 @@ module.exports = {
             priority: -10
           }
         }
-      },
-      runtimeChunk: {
-        name: 'runtime'
       }
     })
 

@@ -98,6 +98,9 @@ module.exports = function (envKeyWord, env) {
       }
     },
     plugins: [],
-    optimization: {}
+    optimization: {},
+    node: {
+      buffer: false
+    }
   }
 }

@@ -81,7 +81,7 @@
     "pc ui"
   ],
   "author": "appletxm & hf front-end crew",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/appletxm/hf-vue-pc/issues"
   },
