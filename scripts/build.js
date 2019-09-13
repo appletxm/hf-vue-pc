@@ -19,12 +19,14 @@ function build () {
     }
 
     webpack(webpackConfig, function (err, stats) {
+      console.info('******************1*******************')
+      console.info(stats)
+      console.info('*******************2******************')
+
       if (err) {
         spinner.stop()
         throw err
       }
-
-      fs.writeFileSync("stats.json", JSON.stringify(stats.toJson()))
 
       if (process.argv && process.argv[4] === 'current-branch') {
         spinner.stop()

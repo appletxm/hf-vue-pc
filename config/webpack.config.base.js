@@ -64,7 +64,7 @@ module.exports = function (envKeyWord, env) {
               loader: 'postcss-loader',
               options: {
                 sourceMap: true,
-                plugins: () => [autoprefixer({ browsers: ['iOS >= 7', 'Android >= 4.1'] })]
+                plugins: () => [autoprefixer({ overrideBrowserslist: ['iOS >= 7', 'Android >= 4.1'] })]
               }
             },
             'sass-loader'

@@ -21,7 +21,7 @@ const middleWare = webpackDevMiddleware(compiler, {
   publicPath: webpackConfig.output.publicPath,
   hot: true,
   noInfo: true,
-  stats: 'minimal'
+  stats: 'errors-only'
 })
 
 process.env.NODE_ENV = process.argv && process.argv.length >= 2 ? (process.argv)[2] : 'development'
