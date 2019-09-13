@@ -17,8 +17,6 @@
 
 <body>
 	<div id="app" class="app"></div>
-	<img src="assets/images/404_pic@2x.png" />
-
 	<% var jsFiles = htmlWebpackPlugin.options.libFiles.js %>
 	<% for (var index in jsFiles) { %>
 		<script type="text/javascript" src="<%= htmlWebpackPlugin.options.publicPath + jsFiles[index] %>" charset="utf-8"></script>

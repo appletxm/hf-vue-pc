@@ -79,7 +79,7 @@ module.exports = {
             // },
             vendor: {
               name: 'vendor',
-              chunks: 'all',
+              chunks: 'initial',
               test: /axios/,
               priority: -10
             }

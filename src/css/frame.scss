@@ -1,3 +1,5 @@
 .#{$prefix}-my-app{
-  background: red;
+  .#{$prefix}-module-all {
+    margin: $page-gap;
+  }
 }

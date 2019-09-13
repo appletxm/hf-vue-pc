@@ -1,23 +1,20 @@
 /* global Vue */
-// import '../css/index.less'
-// import uiAdapt from 'utils/mobile-adapt'
-// import axioDecorate from 'common/axio-decorate'
-// import router from './router'
-// import store from './store'
-// import App from './app'
-
-// uiAdapt(window, document, 750)
-// axioDecorate.decorate()
-
-// new Vue({
-//   router,
-//   store,
-//   render: (h) => h(App)
-// }).$mount('#app')
+import Vue from 'vue'
 
 import styles from '../css/index.scss'
+import router from './router'
+import { setInitialStates } from './store/state'
+import { getStore } from './store'
+import App from './app'
 
-import axios from 'axios'
-console.info('=======111111======', styles)
-console.info('====33333===')
-window.abc = 6666
+const { appPrefix } = styles
+const state = setInitialStates({appPrefix})
+const store = getStore(state)
+
+new Vue({
+  router,
+  store,
+  render: (h) => h(App)
+}).$mount('#app')
+
+
