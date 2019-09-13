@@ -6,34 +6,15 @@
 </template>
 
 <script>
-  import tab from 'components/tab'
-  
-  const tabData = Object.freeze([
-    {
-      id: '001',
-      name: 'Tab1',
-      label: 'labe1'
-    },
-    {
-      id: '002',
-      name: 'Tab2',
-      label: 'labe2'
-    }
-  ])
-
   export default {
     data() {
-      return {
-        tabData
-      }
+      return {}
     },
     computed: {},
 
     watch: {},
 
-    components: {
-      tab
-    },
+    components: {},
 
     methods: {
       changeTab(val) {

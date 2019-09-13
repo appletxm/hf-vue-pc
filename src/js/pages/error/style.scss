@@ -1,0 +1,14 @@
+.#{$prefix}-p-error{
+  text-align: center;
+
+  .pic{
+    margin: 100px auto;
+    width: 500px;
+  }
+  .info{
+    margin-top: .3rem;
+    h1{
+      color: $purple;
+    }
+  }
+}

@@ -27,9 +27,9 @@
       loginSuccessCb() {}
     },
     watch: {
-      // '$store.state.needShowLoginPop'(val) {
-      //   console.info('====', val)
-      // }
+      '$store.state.needShowLoginPop'(val) {
+        console.info('====', val)
+      }
     },
     created() {
       const navigatorList = getNavigatorList()

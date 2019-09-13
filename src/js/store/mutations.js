@@ -15,5 +15,9 @@ export default {
 
   [actionTypes.USER_INFO](state, value) {
     state.userInfo = value
+  },
+
+  [actionTypes.NEED_SHOW_LOGIN_POP](state, value) {
+    state.needShowLoginPop = value
   }
 }

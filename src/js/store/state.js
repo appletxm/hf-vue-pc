@@ -3,7 +3,8 @@ const detault = {
   announcementList: [],
   currentModule: 'Home',
   navigatorList: [],
-  appPrefix: ''
+  appPrefix: '',
+  needShowLoginPop: false
 }
 export const setInitialStates = (initialStates) => {
   return Object.assign(detault, initialStates)
