@@ -15,10 +15,9 @@
 //   render: (h) => h(App)
 // }).$mount('#app')
 
-// import '../css/index.scss'
+import styles from '../css/index.scss'
+
 import axios from 'axios'
-alert('--------------------------')
-alert('=============')
-console.info('=======111111======', axios)
+console.info('=======111111======', styles)
 console.info('====33333===')
 window.abc = 6666

@@ -71,12 +71,12 @@ module.exports = {
           name: true,
           chunks: 'all',
           cacheGroups: {
-            styles: {
-              name: 'styles',
-              test: /\.(scss|css)$/,
-              chunks: 'all',
-              enforce: true,
-            },
+            // styles: {
+            //   name: 'styles',
+            //   test: /\.(scss|css)$/,
+            //   chunks: 'all',
+            //   enforce: true,
+            // },
             vendor: {
               name: 'vendor',
               chunks: 'all',
@@ -108,7 +108,7 @@ module.exports = {
       )
     } else {
       cssPath = 'css/[name].min.[contenthash:7].css'
-      cssChunkPath = 'css/[id].min.[chunkhash:8=7].css'
+      cssChunkPath = 'css/[id].min.[chunkhash:7].css'
 
       webpackConfig.plugins.push(
         new webpack.optimize.OccurrenceOrderPlugin()
@@ -122,8 +122,8 @@ module.exports = {
       }]),
       
       new MiniCssExtractPlugin({
-        filename: cssPath,
-        chunkFilename: cssChunkPath
+        filename: cssPath
+        // ,chunkFilename: cssChunkPath
       })
     )
 

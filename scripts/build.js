@@ -19,10 +19,6 @@ function build () {
     }
 
     webpack(webpackConfig, function (err, stats) {
-      console.info('******************1*******************')
-      console.info(stats)
-      console.info('*******************2******************')
-
       if (err) {
         spinner.stop()
         throw err
