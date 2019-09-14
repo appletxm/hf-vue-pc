@@ -143,7 +143,7 @@ module.exports = {
       Object.keys(rawCss).forEach(item => {
         if (rawCss[item] && rawCss[item]['dest']) {
           let dest = rawCss[item]['dest']
-          dest = dest.replace('{{version}}', rawCss[item]['version'])
+          dest = dest.replace('<%version%>', rawCss[item]['version'])
           dest = dest.replace('src/', '')
           css.push(dest)
         }
@@ -151,7 +151,7 @@ module.exports = {
       Object.keys(rawJavascript).forEach(item => {
         if (rawJavascript[item] && rawJavascript[item]['dest']) {
           let dest = rawJavascript[item]['dest']
-          dest = dest.replace('{{version}}', rawJavascript[item]['version'])
+          dest = dest.replace('<%version%>', rawJavascript[item]['version'])
           dest = dest.replace('src/', '')
           javascript.push(dest)
         }

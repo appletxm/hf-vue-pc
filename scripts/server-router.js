@@ -13,11 +13,7 @@ const serverRouter = {
     next()
   },
 
-  '/rf_express': assignRouter,
-
-  '/api/fuli-identity': assignRouter,
-
-  '/kdn': assignRouter,
+  '/api': assignRouter,
 
   '/': routerRootPath,
 

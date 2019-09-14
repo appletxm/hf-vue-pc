@@ -1,5 +1,5 @@
 /* global Vue */
-import auth from 'common/auth'
+import { removeAllCookie } from 'common/auth'
 import globals from 'common/globals'
 import { NEED_SHOW_LOGIN_POP } from 'store/mutation-types'
 
@@ -13,7 +13,7 @@ export const errorPopMsg = {
   showTimeoutErrConfrim(errorObj) {
     Vue.$messagebox.alert(TOKEN_INVALID, '登录过期').then(() => {
       let url
-      auth.removeAllCookie()
+      removeAllCookie()
       url = window.location.origin + window.location.pathname + '#/login?timeOut=1'
       window.location.href = url
     }).catch(() => {

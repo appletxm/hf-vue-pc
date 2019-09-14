@@ -2,56 +2,30 @@ const path = require('path')
 const fs = require('fs')
 const formidable = require('formidable')
 const serverProxy = require('./server-proxy')
-const isMock = false
+let isMock = false
 const env = require('../config/env')
 
 function getMockFile(reqPath, res) {
-  reqPath = reqPath.replace('/api', '')
-  reqPath = path.join(__dirname, '../mock' + reqPath)
-
-  console.info('[req info mock]', reqPath)
-
-  fs.readFile(reqPath, function (err, result) {
-    var result = JSON.parse(String(result))
-    if (err) {
-      res.send(err)
-    } else {
-      res.set('content-type', 'application/json')
-      res.send(result)
-    }
-    res.end()
-  })
-}
-
-function getProxyConfig(req) {
-  // rfucenterApi: '', // http://10.60.65.181:6080 
-  // rfExpressApi: '', // http://10.60.65.181:8080
-  // env['development']['rfucenterApi']
-
-  var rfExpressApi = {
-    // dev env
-    host: '10.60.64.132',
-    port: '8080'
-
-    // test env
-    // host: '10.60.32.120',
-    // port: '8080'
+  try {
+    reqPath = reqPath.replace('/api', '/mocks')
+    reqPath = path.resolve('.' + reqPath)
+  
+    console.info('[req info mock]', reqPath)
+  
+    fs.readFile(reqPath, function (err, result) {
+      var result = JSON.parse(String(result))
+      if (err) {
+        res.send(err)
+      } else {
+        res.set('content-type', 'application/json')
+        res.send(result)
+      }
+      res.end()
+    })
+  } catch(err) {
+    console.info(err)
   }
-  var rfucenterApi = {
-    // dev env
-    host: '10.60.64.192',
-    port: '8447'
-
-    // test env
-    // host: '10.60.33.89',
-    // port: '8442'
-  }
-
-  if (('/rf_express').indexOf(req.baseUrl) >= 0) {
-    return rfExpressApi
-  } else {
-    return rfucenterApi
-  }
+  
 }
 
 function recieveImageFile(req, res, next) {
@@ -123,21 +97,6 @@ function assignRouter(req, res, next) {
     isMock = true
     console.log('mock reqPath', reqPath)
     getMockFile(reqPath + '.json', res)
-  } else if (process.env.NODE_ENV === 'development') {
-    proxyConfig = getProxyConfig(req)
-
-    if ((/\/kdn/).test(req.originalUrl)) {
-      req.originaUrl = '/Ebusiness/EbusinessOrderHandle.aspx'
-      serverProxy.doProxy({
-        host: 'api.kdniao.cc',
-        port: '80'
-      }, req, res)
-    } else if ((/fuli-identity/).test(req.originalUrl)) {
-      req.originalUrl = req.originalUrl.replace(/\/api\/fuli-identity/, '/fuli-identity')
-      serverProxy.doProxy(proxyConfig, req, res)
-    } else {
-      serverProxy.doProxy(proxyConfig, req, res)
-    }
   }
   if (next) {
     next()
@@ -213,8 +172,6 @@ function routerUploadSingleFile(req, res, next) {
     isMock = true
     console.log('mock reqPath', reqPath.replace(/\?.*$/, ''))
     recieveImageFile(req, res, next)
-  } else if (process.env.NODE_ENV === 'development') {
-    serverProxy.doProxy(getProxyConfig(), req, res, true)
   }
   if (next) {
     next()
@@ -239,7 +196,6 @@ function routerJsFile(req, res, compiler) {
 
 module.exports = {
   getMockFile,
-  getProxyConfig,
   recieveImageFile,
   assignRouter,
   routerRootPath,

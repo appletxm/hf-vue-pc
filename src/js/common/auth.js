@@ -1,38 +1,27 @@
 import * as uiUtils from 'utils/ui-utils'
 
-const FR_EXPRESS_ACCESS_TOKEN = 'loginToken'
+const ACCESS_TOKEN = 'loginToken'
 
-export default {
-  checkUserLogin() {
-    let hasToken
-    // ,getLoginUserInfo
-
-    hasToken = false
-    // getLoginUserInfo = false
-
-    if (uiUtils.uiCookie.get(FR_EXPRESS_ACCESS_TOKEN)) {
-      hasToken = true
-    }
-
-    // if (store.state.userInfo.userId) {
-    //   getLoginUserInfo = true
-    // }
-
-    return hasToken
-  },
-
-  setTokenToCookie(value) {
-    let cookieTime
-
-    cookieTime = 1000 * 60 * 60 * 24 * 7
-    uiUtils.uiCookie.set(FR_EXPRESS_ACCESS_TOKEN, value, cookieTime)
-  },
-
-  getTokenFromCookie() {
-    return uiUtils.uiCookie.get(FR_EXPRESS_ACCESS_TOKEN)
-  },
-
-  removeAllCookie() {
-    uiUtils.uiCookie.delete(FR_EXPRESS_ACCESS_TOKEN)
+export function checkUserLogin() {
+  let hasToken
+  hasToken = false
+  if (uiUtils.uiCookie.get(ACCESS_TOKEN)) {
+    hasToken = true
   }
+
+  return hasToken
+}
+
+export function setTokenToCookie(value) {
+  let cookieTime
+  cookieTime = 1000 * 60 * 60 * 24 * 7
+  uiUtils.uiCookie.set(ACCESS_TOKEN, value, cookieTime)
+}
+
+export function getTokenFromCookie() {
+  return uiUtils.uiCookie.get(ACCESS_TOKEN)
+}
+
+export function removeAllCookie() {
+  uiUtils.uiCookie.delete(ACCESS_TOKEN)
 }

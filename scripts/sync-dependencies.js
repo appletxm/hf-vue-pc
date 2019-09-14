@@ -36,7 +36,7 @@ function copyFile(src, dest) {
 }
 
 function getDestPath(verions, destPath) {
-  destPath = destPath.replace(/{{version}}/, verions)
+  destPath = destPath.replace('<%version%>', verions)
   return destPath
 }
 

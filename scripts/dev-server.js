@@ -5,6 +5,7 @@ const fs = require('fs')
 const chalk = require('chalk')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
+const httpProxyMiddleware = require('http-proxy-middleware')
 const envConfig = require('../config/env')
 const webpackConfig = require('../config/webpack.config')
 const serverRouter = require('./server-router')
@@ -12,6 +13,7 @@ const app = express()
 const compiler = webpack(webpackConfig)
 const host = envConfig['development']['host']
 const port = envConfig['development']['port']
+const proxyTarget = envConfig['development']['proxy']['url']
 
 // const multer = require('multer')
 // const upload = multer({ dest: 'uploads/' })
@@ -25,11 +27,10 @@ const middleWare = webpackDevMiddleware(compiler, {
 })
 
 process.env.NODE_ENV = process.argv && process.argv.length >= 2 ? (process.argv)[2] : 'development'
+
 app.use(middleWare)
 app.use(webpackHotMiddleware(compiler))
-
 app.use(express.static(__dirname + '/../dist'))
-
 app.use('*', serverRouter['*'])
 
 // single file
@@ -37,27 +38,15 @@ app.use('*', serverRouter['*'])
 //   serverRouter['uploadSingleFile'](req, res)
 // })
 
-// app.use('/rf_express', function (req, res) {
-//   serverRouter['/rf_express'](req, res)
-// })
-
-// app.use('/api/fuli-identity', function (req, res) {
-//   serverRouter['/api/fuli-identity'](req, res)
-// })
-
-// app.use('/kdn', function (req, res) {
-//   serverRouter['/kdn'](req, res)
-// })
+app.use('/api',function (req, res) {
+  if(process.env.NODE_ENV === 'development') {
+    httpProxyMiddleware({target: proxyTarget, changeOrigin: true})(req, res)
+  } else {
+    serverRouter['/api'](req, res)
+  }
+})
 
 app.use(['/*assets/images/*'], function (req, res) {
-  serverRouter['image'](req, res, compiler)
-})
-
-app.use('/kdn', function (req, res) {
-  serverRouter['/kdn'](req, res)
-})
-
-app.use('/*assets/images/*', function (req, res) {
   serverRouter['image'](req, res, compiler)
 })
 
