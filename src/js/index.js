@@ -1,6 +1,4 @@
 /* global Vue */
-import Vue from 'vue'
-
 import styles from '../css/index.scss'
 import router from './router'
 import { setInitialStates } from './store/state'

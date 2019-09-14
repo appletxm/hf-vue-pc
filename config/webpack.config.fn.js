@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const TerserJSPlugin  = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin   = require('optimize-css-assets-webpack-plugin')
 const HtmlWebPlugin = require('html-webpack-plugin')
@@ -130,14 +131,52 @@ module.exports = {
     return webpackConfig
   },
 
+  getCssJsFile: function () {
+    let css = [] 
+    let javascript = []
+    try {
+      let filePath = path.resolve('./dependencies.json')
+      let dep = fs.readFileSync(filePath)
+      let depObj = JSON.parse(dep)['dependencies']
+      let rawCss = depObj.css
+      let rawJavascript = depObj.javascript
+      Object.keys(rawCss).forEach(item => {
+        if (rawCss[item] && rawCss[item]['dest']) {
+          let dest = rawCss[item]['dest']
+          dest = dest.replace('{{version}}', rawCss[item]['version'])
+          dest = dest.replace('src/', '')
+          css.push(dest)
+        }
+      })
+      Object.keys(rawJavascript).forEach(item => {
+        if (rawJavascript[item] && rawJavascript[item]['dest']) {
+          let dest = rawJavascript[item]['dest']
+          dest = dest.replace('{{version}}', rawJavascript[item]['version'])
+          dest = dest.replace('src/', '')
+          javascript.push(dest)
+        }
+      })
+      return {
+        css, javascript
+      }
+    } catch (err) {
+      console.info(err)
+
+      return {
+        css, javascript
+      }
+    }
+  },
+
   getHtmlWebPluginConfig: function (env, webpackConfig) {
+    const { css, javascript } = this.getCssJsFile()
     var baseConfig = {
       favicon: '',
       inject: 'body',
       publicPath: env.publicPath,
       libFiles: {
-        css: [],
-        js: []
+        css: css,
+        js: javascript
       }
     }
     webpackConfig.plugins.push(
@@ -148,12 +187,7 @@ module.exports = {
         chunks: ['vendor', 'runtime', 'app'],
         inject: 'body',
         needViewPort: false,
-        inject: 'body',
-        publicPath: env.publicPath,
-        libFiles: {
-          css: [],
-          js: []
-        }
+        inject: 'body'
       }))
     )
 
