@@ -1,6 +1,7 @@
 import * as uiUtils from 'utils/ui-utils'
 
 const ACCESS_TOKEN = 'loginToken'
+const cookieTime = 1000 * 60 * 60 * 24 * 7
 
 export function checkUserLogin() {
   let hasToken
@@ -13,8 +14,6 @@ export function checkUserLogin() {
 }
 
 export function setTokenToCookie(value) {
-  let cookieTime
-  cookieTime = 1000 * 60 * 60 * 24 * 7
   uiUtils.uiCookie.set(ACCESS_TOKEN, value, cookieTime)
 }
 

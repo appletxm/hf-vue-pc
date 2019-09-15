@@ -20,7 +20,7 @@ export default {
   },
 
   set(key, value) {
-    let objKeys = typeof value === 'string' ? [] : Object.keys(value)
+    const objKeys = typeof value === 'string' ? [] : Object.keys(value)
     let str = value
 
     if (objKeys.length > 0) {

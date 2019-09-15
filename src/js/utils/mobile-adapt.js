@@ -1,16 +1,13 @@
-export default function uiAdapt (win, doc, uxWidth) {
-  var docEl,
-    rem,
-    dpr,
-    resizeEvt,
-    recalc
+export default function uiAdapt(win, doc, uxWidth) {
+  let rem
+  const docEl = doc.documentElement
+  const dpr = win.devicePixelRatio || 1
+  const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
 
   uxWidth = uxWidth || 750
-  docEl = doc.documentElement
-  dpr = win.devicePixelRatio || 1
-  resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
-  recalc = function () {
-    var clientWidth = docEl.clientWidth * dpr
+
+  function recalc() {
+    const clientWidth = docEl.clientWidth * dpr
     if (!clientWidth) return
     if (clientWidth >= uxWidth) {
       rem = 100

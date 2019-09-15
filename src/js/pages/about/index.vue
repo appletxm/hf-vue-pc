@@ -6,21 +6,20 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {}
-    },
-    computed: {},
+export default {
+  components: {},
+  data() {
+    return {}
+  },
+  computed: {},
 
-    watch: {},
+  watch: {},
 
-    components: {},
+  created() {},
 
-    methods: {},
+  mounted() {
+  },
 
-    created() {},
-
-    mounted() {
-    }
-  }
+  methods: {}
+}
 </script>
