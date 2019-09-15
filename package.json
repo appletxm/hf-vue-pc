@@ -82,6 +82,7 @@
     "vue",
     "vuex",
     "vue-router",
+    "element-ui",
     "scss",
     "pc ui"
   ],
