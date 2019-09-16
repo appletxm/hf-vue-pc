@@ -7,9 +7,7 @@ function getVerionNo(versionNo) {
   }
   const pkgFileObj = JSON.parse(fs.readFileSync(path.resolve('./package.json')))
   const { version } = pkgFileObj
-  console.info(version)
   const numbs = version.split('.')
-  console.info(numbs)
   numbs[2] = Number(numbs[2]) + 1
   return numbs.join('.')
 }

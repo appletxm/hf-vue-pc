@@ -4,7 +4,7 @@ const distOperations = require('././release-dist-operations')
 const releaseCodeOperations = require('./release-code-operations')
 const { getVerionNo } = require('./release-version')
 let version = process.argv ? (process.argv)[3] : ''
-const desc = process.argv ? (process.argv)[4] : ''
+const desc = process.argv ? (process.argv)[4] : 'version update'
 const ora = require('ora')
 const chalk = require('chalk')
 let spinner
