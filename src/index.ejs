@@ -13,6 +13,7 @@
 	<% for (var index in cssFiles) { %>
 		<link href="<%= htmlWebpackPlugin.options.publicPath + cssFiles[index] %>" rel="stylesheet" />
 	<% } %>
+	<script type="text/javascript" src="<%= htmlWebpackPlugin.options.publicPath + 'js/cfg.js' %>" charset="utf-8"></script>
 </head>
 
 <body>

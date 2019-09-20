@@ -3,7 +3,6 @@ module.exports = {
   port: 8087,
   api: '/api',
   publicPath: '',
-  publicPath: '',
   distPath: './dist',
   sourcePath: './src'
 }
