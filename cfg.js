@@ -1,0 +1,3 @@
+window.appInfo = {
+  api: '/api'
+}
