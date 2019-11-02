@@ -5,13 +5,9 @@ const envConfig = require('./env')
 const envKeyWord = (process.argv)[2]
 const envPrefix = (process.argv)[3] || envKeyWord
 const env = envConfig[envKeyWord]
-// const publicPath = env.publicPath
-// let sourcePath, distPath
 let webpackConfig
 
 process.env.NODE_ENV = envKeyWord
-// sourcePath = path.join(__dirname, env.sourcePath)
-// distPath = path.join(__dirname, env.distPath)
 
 console.info(`***current env***`, envKeyWord, envPrefix)
 
