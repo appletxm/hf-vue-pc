@@ -1,0 +1,78 @@
+<div :class="[$store.state.appPrefix + '-p-menu']">
+  <div
+    v-loading="isPageLoading"
+  >
+    <div
+      class="list-filter"
+      :class="{'list-filter-coll': isFilterCollpase}">
+      <el-form label-suffix=":" :inline="true" ref="filterForm" :model="filterForm" size="small">
+        <el-form-item label="菜单名" label-width="60px">
+          <el-input v-model="filterForm.menuName" clearable placeholder="请输入菜单名"></el-input>
+        </el-form-item>
+        <el-form-item label="菜单类型">
+          <el-select v-model="filterForm.menuType" clearable placeholder="请选择菜单类型">
+            <el-option
+              v-for="(value, key, index) in menuTypeMap"
+              :key="index"
+              :value="key"
+              :label="value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="菜单归属">
+          <el-select v-model="filterForm.belongType" clearable placeholder="请选择菜单归属类型">
+            <el-option
+              v-for="(value, key, index) in menuBelongTypeMap"
+              :key="index"
+              :value="key"
+              :label="value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="是否显示">
+          <el-select v-model="filterForm.isShow" clearable placeholder="请选择菜单是否显示">
+            <el-option
+              v-for="(value, key, index) in menuIsShowMap"
+              :key="index"
+              :value="key"
+              :label="value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <hf-ui-button type="primary" @click.prevent="search">查询</hf-ui-button>
+          <hf-ui-button @click.prevent="resetForm">重置</hf-ui-button>
+        </el-form-item>
+      </el-form>
+
+      <!-- <hf-ui-button
+        class="u-btn u-btn-default"
+        @click.prevent="isFilterCollpase = !isFilterCollpase">
+        <i class="fa fa-filter g-mr5"></i>
+        {{ isFilterCollpase ? '查询' : '隐藏' }}
+      </hf-ui-button>
+      <hf-ui-button
+        v-if="$hasPermission('menu--add')"
+        class="u-btn u-btn-default"
+        @click.prevent="add(null)">
+        <i class="fa fa-plus g-mr5"></i>新建
+      </hf-ui-button> -->
+    </div>
+
+    <!-- 列表 -->
+    <div
+      v-loading="isListLoading"
+      class="list-content"
+    >
+      <div class="list-item list-item--tit">
+        <span class="item1 g-tc">菜单名称</span>
+        <span class="item2">排序号</span>
+        <span class="item3">菜单类型</span>
+        <span class="item4">链接</span>
+        <span class="item5">菜单归属</span>
+        <span class="item6">是否显示</span>
+        <span class="item7">操作</span>
+      </div>
+    </div>
+  </div>
+</div>

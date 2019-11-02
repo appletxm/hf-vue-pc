@@ -1,6 +1,6 @@
 <template>
   <el-breadcrumb separator-class="el-icon-arrow-right"  :class="[$store.state.appPrefix + '-c-bread']">
-    <el-breadcrumb-item v-for="item in breadData" :key="item.id">{{ item.menuName }}</el-breadcrumb-item>
+    <el-breadcrumb-item v-for="item in breadData" :to="{path: item.menuUrl}" :key="item.id">{{ item.menuName }}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 <script>
