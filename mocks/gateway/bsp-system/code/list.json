@@ -1,0 +1,34 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "curPageSize": 2,
+    "pageNo": 1,
+    "pageSize": 9999,
+    "totalPage": 1,
+    "totalCount": 2,
+    "list": [{
+      "id": "1075238406500065281",
+      "createdDt": "2018-12-19 11:56:27",
+      "updatedDt": null,
+      "remark": null,
+      "codeNum": "1",
+      "codeName": "管理者",
+      "codeTypeNum": "identityType",
+      "parentId": null,
+      "status": "0",
+      "sortNo": 1
+    }, {
+      "id": "1075238449227440130",
+      "createdDt": "2018-12-19 11:56:37",
+      "updatedDt": null,
+      "remark": null,
+      "codeNum": "2",
+      "codeName": "数据采集管理员",
+      "codeTypeNum": "identityType",
+      "parentId": null,
+      "status": "0",
+      "sortNo": 2
+    }]
+  }
+}

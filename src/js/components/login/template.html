@@ -1,0 +1,40 @@
+<div class="login-form">
+  <el-form
+    ref="loginForm"
+    v-loading="isSubmiting"
+    :model="loginForm"
+    :rules="loginRules"
+    status-icon
+  >
+    <el-form-item prop="username">
+      <el-input
+        v-model="loginForm.username"
+        placeholder="请输入用户名"
+        @keyup.enter.native="$login"
+      >
+      </el-input>
+    </el-form-item>
+    <el-form-item prop="password">
+      <el-input
+        v-model="loginForm.password"
+        type="password"
+        placeholder="请输入密码"
+        @keyup.enter.native="$login"
+      >
+
+      </el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-checkbox v-model="checked">记住账号</el-checkbox>
+    </el-form-item>
+    <el-form-item>
+      <hf-ui-button
+        type="primary"
+        class="btn"
+        @click="$login"
+      >
+        登录
+      </hf-ui-button>
+    </el-form-item>
+  </el-form>
+</div>

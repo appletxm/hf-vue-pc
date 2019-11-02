@@ -13,11 +13,22 @@ body {
   font-family: $font-family;
 }
 
-.c {
-  clear: both;
-}
 
 a {
-  color: $purple;
   text-decoration: none;
+  color: $clr-warning-color;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+h1, p {
+  margin: 0;
+}
+input, button, select, textarea {
+    outline: none;
+    -webkit-appearance: none;
+    font-family: $font-family;
+    border-radius: 0;
 }

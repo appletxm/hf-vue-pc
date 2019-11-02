@@ -1,11 +1,70 @@
-@mixin border-radius($radius) {
+@mixin border-radius($radius: 5px) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   border-radius: $radius;
 }
 
+// 圆角
 @mixin transition($transition) {
   -webkit-transition: $transition;
   -moz-transition: $transition;
   transition: $transition;
+}
+
+// 边框
+@mixin border ($pos: null, $borderColor: $default-border-color, $borderWidth: 1px, $type: solid) {
+  @if $pos {
+    border-#{$pos}: $borderWidth $type $borderColor;
+  } @else {
+    border: 1px solid $default-border-color;
+  }
+}
+
+@mixin placeholder() {
+  &::-webkit-input-placeholder,
+  &:-moz-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin flexLayout($justify: left, $display: flex) {
+  display: $display;
+  justify-content: $justify;
+  align-items: flex-start;
+
+  @content;
+}
+
+@mixin center() {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin clear() {
+  &::before,
+  &::after, {
+    content: '';
+    display: table;
+  }
+
+  &::after, {
+    clear: both;
+  }
+}
+
+@mixin textOverflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin getColorAlpha($color, $opacity) {
+  color: rgba($color, $opacity);
+}
+
+@mixin getBgColorAlpha($color, $opacity) {
+  background-color: rgba($color, $opacity);
 }

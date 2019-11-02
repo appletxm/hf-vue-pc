@@ -7,9 +7,13 @@
 
 @import "../assets/font/iconfont.css";
 
-@import "../js/components/navigator/style";
-@import "../js/components/user-login/style";
+@import "../js/components/login-pop/style";
+@import "../js/components/header/style";
+@import "../js/components/leftbar/style";
+@import "../js/components/bread-crumb/style";
 
 @import "../js/pages/home/style";
-@import "../js/pages/about/style";
 @import "../js/pages/error/style";
+@import "../js/pages/login/style";
+@import "../js/pages/sysman/menu/style";
+

@@ -1,0 +1,92 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "curPageSize": 10,
+    "pageNo": 1,
+    "pageSize": 10,
+    "totalPage": 2,
+    "totalCount": 13,
+    "list": [{
+      "id": "1039790507591610369",
+      "createdDt": "2018-09-12 16:19:10",
+      "updatedDt": "2019-10-31 17:48:56",
+      "remark": "默认异常页面",
+      "configKey": "web.uri.500",
+      "configValue": "/500/springfesteval",
+      "sortNo": 90
+    }, {
+      "id": "1040485280551931906",
+      "createdDt": "2018-09-14 14:19:57",
+      "updatedDt": "2018-09-14 14:19:57",
+      "remark": "默认-前台首页",
+      "configKey": "web.front.url.index",
+      "configValue": "/500",
+      "sortNo": 140
+    }, {
+      "id": "1042302932840865794",
+      "createdDt": "2018-09-19 14:42:39",
+      "updatedDt": "2018-09-19 14:42:39",
+      "remark": "默认-后台首页",
+      "configKey": "web.backend.uri.index",
+      "configValue": "/frontEnd/admin/index",
+      "sortNo": 150
+    }, {
+      "id": "1045950390763274241",
+      "createdDt": "2018-09-29 16:16:21",
+      "updatedDt": "2019-01-23 14:53:36",
+      "remark": "超管角色id，多个使用逗号隔开",
+      "configKey": "sys.role.admin.id",
+      "configValue": "system-admin,1087965720415227905",
+      "sortNo": 13334
+    }, {
+      "id": "1049847962347278337",
+      "createdDt": "2018-10-10 10:23:54",
+      "updatedDt": "2019-03-04 16:56:57",
+      "remark": "默认密码",
+      "configKey": "sys.user.default.pwd",
+      "configValue": "Password1",
+      "sortNo": 13154
+    }, {
+      "id": "1064717941227106306",
+      "createdDt": "2018-11-20 11:11:53",
+      "updatedDt": "2018-11-20 11:11:53",
+      "remark": "公共功能（接口）的id",
+      "configKey": "menu.common.id",
+      "configValue": "1049838795560779777",
+      "sortNo": 13254
+    }, {
+      "id": "1064718090879873026",
+      "createdDt": "2018-11-20 11:12:29",
+      "updatedDt": "2018-11-20 11:12:29",
+      "remark": "管理后台的菜单id",
+      "configKey": "menu.back.admin.id",
+      "configValue": "1027740701250162123",
+      "sortNo": 13264
+    }, {
+      "id": "1087648214404222977",
+      "createdDt": "2019-01-22 17:48:36",
+      "updatedDt": "2019-01-22 17:49:09",
+      "remark": "身份信息条数设置",
+      "configKey": "user.ext.max.size",
+      "configValue": "7",
+      "sortNo": 13344
+    }, {
+      "id": "1098114944831500290",
+      "createdDt": "2019-02-20 14:59:40",
+      "updatedDt": "2019-02-20 14:59:40",
+      "remark": "申请{},{}",
+      "configKey": "aep.msg.approval.format",
+      "configValue": "申请{},{}",
+      "sortNo": 13354
+    }, {
+      "id": "fcd4faf429e311e896f31418772e7910",
+      "createdDt": null,
+      "updatedDt": "2019-06-25 13:56:22",
+      "remark": "Token秘钥",
+      "configKey": "token_secret",
+      "configValue": "HF_TOKEN_SECRET",
+      "sortNo": 0
+    }]
+  }
+}

@@ -1,5 +1,25 @@
+
 .#{$prefix}-my-app{
-  .#{$prefix}-module-all {
-    margin: $page-gap;
+  .hf-ui-layout {
+    height: calc(100vh - #{$header-height});
+    .hf-ui-aside {
+      overflow: auto;
+    }
+    .aside-right {
+      width: calc(100vw - #{$leftbar-width} - #{$gap*2});
+      margin: 0 $gap $gap $gap;
+      min-width: $leftbar-width;
+    }
+    .hf-ui-main {
+      // min-width: $screen-lg-min;
+      overflow: auto;
+    }
+  }
+  .hf-ui-header {
+    box-shadow: 0 0 15px rgba($clr-projection-color, 0.15);
+  }
+
+  .hf-ui-aside {
+    background-color: $main-color-05;
   }
 }

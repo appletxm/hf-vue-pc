@@ -1,7 +1,7 @@
 module.exports = {
   host: '127.0.0.1',
   port: 8089,
-  api: '/api',
+  api: '/gateway',
   proxy: {
     url: 'http://127.0.0.1:9000'
   },
@@ -9,5 +9,6 @@ module.exports = {
     return 'http://' + this.host + ':' + this.port + '/dist/'
   },
   distPath: './dist',
-  sourcePath: './src'
+  sourcePath: './src',
+  isMock: true
 }

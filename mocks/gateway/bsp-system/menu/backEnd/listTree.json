@@ -1,0 +1,49 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": [
+    {
+      "id": "1045970623985201154",
+      "parentId": "1045970495056490497",
+      "parentIds": "0,1045970495056490497",
+      "menuName": "菜单管理",
+      "menuIcon": null,
+      "sortNo": 1,
+      "menuUrl": "/menu/list",
+      "status": 0
+    },
+    
+    {
+      "id": "1045970495056490497",
+      "parentId": "0",
+      "parentIds": "0",
+      "menuName": "系统管理",
+      "menuIcon": "el-icon-setting",
+      "sortNo": 5,
+      "menuUrl": "",
+      "status": 0
+    },
+
+    {
+      "id": "1029212684597014529",
+      "parentId": "1045970495056490497",
+      "parentIds": "0,1045970495056490497",
+      "menuName": "用户管理",
+      "menuIcon": null,
+      "sortNo": 50,
+      "menuUrl": "/user/list",
+      "status": 0
+    },
+
+    {
+      "id": "1029212684597014555",
+      "parentId": "1029212684597014529",
+      "parentIds": "0,1045970495056490497,1029212684597014529",
+      "menuName": "用户管理三级菜单",
+      "menuIcon": null,
+      "sortNo": 50,
+      "menuUrl": "/user/list/third",
+      "status": 0
+    }
+  ]
+}

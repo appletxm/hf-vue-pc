@@ -1,0 +1,7 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "permissions": ["menu", "datesource", "view", "config", "code-type", "user", "role", "datesource--list", "view--list", "user--mod", "user--add", "view--add", "role--view", "role--mod", "role--expire", "role--recover", "role--add", "datesource--edit", "view--edit", "menu--list", "menu--mod", "menu--expire", "menu--recover", "menu--add", "config--del", "config--list", "config--view", "config--mod", "config--add", "code-type--list", "datesource--add", "view--del", "code-type--view", "code-type--mod", "code-type--add", "code-type--del", "code-data", "code-data--view", "code-data--del", "code-data--mod", "code-data--add", "datesource--del", "user--del", "user--restpwd", "user--expire", "user--recover", "menu--del", "user--view", "role--del", "menu--view", "user--upload"]
+  }
+}

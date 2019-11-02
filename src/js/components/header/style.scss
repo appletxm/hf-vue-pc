@@ -1,0 +1,36 @@
+.#{$prefix}-c-header{
+  display: flex;
+  .headr-logo{
+    line-height: $header-height;
+    text-align: center;
+    width: 200px;
+    cursor: pointer;
+
+    img {
+      vertical-align: middle;
+    }
+  }
+
+  .header-right{
+    width: calc(100vw - 200px);
+    text-align: right;
+    line-height: $header-height;
+    padding-right: $gap;
+
+    .header-personal {
+      display: inline-block;
+    }
+
+    .header-portrait{
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+      background-color: $clr-divider-color;
+      vertical-align: middle;
+      border-radius: 12px;
+      line-height: 24px;
+      text-align: center;
+    }
+  }
+}

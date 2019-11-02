@@ -1,0 +1,42 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "curPageSize": 3,
+    "pageNo": 1,
+    "pageSize": 10,
+    "totalPage": 1,
+    "totalCount": 3,
+    "list": [{
+      "id": "1087965720415227905",
+      "createdDt": null,
+      "updatedDt": null,
+      "remark": null,
+      "roleName": "超级管理员",
+      "roleType": null,
+      "roleNum": null,
+      "status": "0",
+      "sortNo": null
+    }, {
+      "id": "1102769929191186434",
+      "createdDt": null,
+      "updatedDt": null,
+      "remark": null,
+      "roleName": "普通管理员",
+      "roleType": null,
+      "roleNum": null,
+      "status": "0",
+      "sortNo": null
+    }, {
+      "id": "1126657826439020546",
+      "createdDt": null,
+      "updatedDt": null,
+      "remark": null,
+      "roleName": "测试角色",
+      "roleType": null,
+      "roleNum": null,
+      "status": "0",
+      "sortNo": null
+    }]
+  }
+}

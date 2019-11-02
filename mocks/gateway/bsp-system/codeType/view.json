@@ -1,0 +1,13 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "id": "1189791748918800386",
+    "createdDt": "2019-10-31 14:30:33",
+    "updatedDt": "2019-10-31 14:30:33",
+    "remark": "MySQL数据类型",
+    "codeTypeNum": "JDBC_TYPE",
+    "nationNum": "",
+    "codeTypeName": "数据类型"
+  }
+}

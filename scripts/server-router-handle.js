@@ -7,7 +7,7 @@ const env = require('../config/env')
 
 function getMockFile(reqPath, res) {
   try {
-    reqPath = reqPath.replace('/api', '/mocks')
+    reqPath = reqPath.replace(env['development']['api'], '/mocks' + env['development']['api'])
     reqPath = path.resolve('.' + reqPath)
   
     console.info('[req info mock]', reqPath)
@@ -25,7 +25,6 @@ function getMockFile(reqPath, res) {
   } catch(err) {
     console.info(err)
   }
-  
 }
 
 function recieveImageFile(req, res, next) {

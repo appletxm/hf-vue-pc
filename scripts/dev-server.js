@@ -38,7 +38,7 @@ app.use('*', serverRouter['*'])
 //   serverRouter['uploadSingleFile'](req, res)
 // })
 
-app.use('/api',function (req, res) {
+app.use(envConfig['development']['api'],function (req, res) {
   if(process.env.NODE_ENV === 'development') {
     httpProxyMiddleware({target: proxyTarget, changeOrigin: true})(req, res)
   } else {

@@ -1,10 +1,13 @@
 /* global Vue */
 import { removeAllCookie } from 'common/auth'
+import { removeItemAll } from 'common/storage'
 import globals from 'common/globals'
 import { NEED_SHOW_LOGIN_POP } from 'store/mutation-types'
 
 export const handleTokenExpired = function () {
   if (globals.store.state.isHandingExpired !== true) {
+    removeItemAll()
+    removeAllCookie()
     globals.store.commit(NEED_SHOW_LOGIN_POP, true)
   }
 }
@@ -30,8 +33,14 @@ export const errorCodeMatch = {
     throw (errorObj)
   },
 
+  '100014'(resData) {
+    const errorObj = { code: resData.retCode, message: resData.retDesc }
+    handleTokenExpired(resData)
+    throw (errorObj)
+  },
+
   '401'(resData) {
-    const errorObj = { code: resData.code, message: resData.detailMessage || resData.message }
+    const errorObj = { code: resData.retCode, message: resData.retDesc }
     handleTokenExpired(resData)
     throw (errorObj)
   }

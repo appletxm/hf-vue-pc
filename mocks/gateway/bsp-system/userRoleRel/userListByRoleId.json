@@ -1,0 +1,42 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "curPageSize": 3,
+    "pageNo": 1,
+    "pageSize": 10,
+    "totalPage": 1,
+    "totalCount": 3,
+    "list": [{
+      "id": "1027740701250162689",
+      "username": "sysadmin",
+      "truename": "系统管理员",
+      "mobile": "13257869632",
+      "email": "36541254@sina.com",
+      "idCard": null,
+      "wechat": null,
+      "selected": "1",
+      "orgName": null
+    }, {
+      "id": "1040413034840051714",
+      "username": "superadmin",
+      "truename": "系统管理员1",
+      "mobile": null,
+      "email": null,
+      "idCard": null,
+      "wechat": null,
+      "selected": "1",
+      "orgName": null
+    }, {
+      "id": "1143814115685765122",
+      "username": "bale",
+      "truename": "bale",
+      "mobile": "13265479632",
+      "email": "123563@av.com",
+      "idCard": null,
+      "wechat": null,
+      "selected": "1",
+      "orgName": null
+    }]
+  }
+}

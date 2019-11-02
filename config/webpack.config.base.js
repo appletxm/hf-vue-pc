@@ -101,7 +101,9 @@ module.exports = function (envKeyWord, env) {
         'assets': path.join(__dirname, '../src/assets/'),
         'common': path.join(__dirname, '../src/js/common/'),
         'utils': path.join(__dirname, '../src/js/utils/'),
-        'store': path.join(__dirname, '../src/js/store')
+        'store': path.join(__dirname, '../src/js/store'),
+        'mixins': path.join(__dirname, '../src/js/mixins'),
+        'filters': path.join(__dirname, '../src/js/filters')
       }
     },
     plugins: [],

@@ -1,12 +1,12 @@
-import * as uiUtils from 'utils/ui-utils'
+import uiCookie from 'utils/cookie'
 
-const ACCESS_TOKEN = 'loginToken'
+const ACCESS_TOKEN = 'HF_Auth_Token'
 const cookieTime = 1000 * 60 * 60 * 24 * 7
 
 export function checkUserLogin() {
   let hasToken
   hasToken = false
-  if (uiUtils.uiCookie.get(ACCESS_TOKEN)) {
+  if (uiCookie.get(ACCESS_TOKEN)) {
     hasToken = true
   }
 
@@ -14,13 +14,13 @@ export function checkUserLogin() {
 }
 
 export function setTokenToCookie(value) {
-  uiUtils.uiCookie.set(ACCESS_TOKEN, value, cookieTime)
+  uiCookie.set(ACCESS_TOKEN, value, cookieTime)
 }
 
 export function getTokenFromCookie() {
-  return uiUtils.uiCookie.get(ACCESS_TOKEN)
+  return uiCookie.get(ACCESS_TOKEN)
 }
 
 export function removeAllCookie() {
-  uiUtils.uiCookie.delete(ACCESS_TOKEN)
+  uiCookie.delete(ACCESS_TOKEN)
 }

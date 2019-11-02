@@ -1,0 +1,104 @@
+// .#{$prefix}-c-leftbar {
+//   position: fixed;
+//   top: $header-height;
+//   left: 0;
+//   bottom: 0;
+//   width: $leftbar-width;
+//   background-color: $white;
+//   box-sizing: border-box;
+//   transition: width $transition-time;
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   z-index: 1000;
+
+//   /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+//   &::-webkit-scrollbar {
+//     width: 4px;
+//     height: 4px;
+//     // background-color: $leftbar-bgcolor;
+//     background-color: #fff;
+//   }
+//   /*定义滚动条轨道 内阴影+圆角*/
+//   &::-webkit-scrollbar-track {
+//     // background-color: $leftbar-bgcolor;
+//     background-color: #fff;
+//   }
+//   /*定义滑块 内阴影+圆角*/
+//   &::-webkit-scrollbar-thumb {
+//     // background-color: #5e676b;
+//     background-color: #fff;
+//   }
+
+//   &.collapse {
+//     width: $leftbar-width-min;
+//     transition: width $transition-collapse-time;
+//   }
+
+//   el-menu {
+//     width: $leftbar-width-min;
+//     margin-bottom: 50px;
+//     background-color: transparent;
+//     border-right: none;
+//     // border-right-color: transparent;
+//     box-sizing: border-box;
+
+//     &:not(.el-menu--collapse) {
+//       width: $leftbar-width;
+//       // border-right-color: transparent;
+//       border-right: none;
+//     }
+
+//     .el-submenu__title {
+//       &:hover {
+//         background-color: #f2f2f2 !important;
+//       }
+//     }
+//     .el-menu-item {
+//       &:hover {
+//         background-color: #f2f2f2 !important;
+//       }
+//       &.is-active {
+//         color: #fff !important;
+//         background-color: $color-primary !important;
+//       }
+//     }
+//     .menu-title{
+//       position: relative;
+//       .wait-num{
+//         position: absolute;
+//         right: -20px;
+//         top: -10px;
+//         background: red;
+//         min-width: 14px;
+//         border-radius: 50px;
+//         padding: 3px;
+//         font-size: 10px;
+//         color: #ffffff;
+//         line-height: 1;
+//         text-align: center;
+//       }
+//     }
+//     .icons{
+//       vertical-align: middle;
+//       margin-right: 2px;
+//       width: 24px;
+//       text-align: center;
+//       font-size: 18px;
+//     }
+//   }
+
+//   .collapse-btn {
+//     width: 100%;
+//     box-sizing: border-box;
+//     font-size: 13px;
+//     line-height: 40px;
+//     text-align: center;
+//     cursor: pointer;
+//     color: #333;
+//     border-bottom: 1px solid $default-border-color;
+//     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+//     // color: #fff;
+//   }
+
+// }
+

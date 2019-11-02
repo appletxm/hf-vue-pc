@@ -1,0 +1,30 @@
+{
+  "id": "1437471",
+  "name": "hf-vue-ui",
+  "font_family": "hf-ui-icon",
+  "css_prefix_text": "ui-icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11088996",
+      "name": "Double arrow up",
+      "font_class": "arrowup",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "11088999",
+      "name": "Double arrow down",
+      "font_class": "arrowdown",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "11199164",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    }
+  ]
+}

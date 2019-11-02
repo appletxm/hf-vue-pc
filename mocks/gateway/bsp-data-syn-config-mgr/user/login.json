@@ -1,0 +1,10 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "truename": "sysadmin",
+    "HF_Auth_Token": "bc2df483-6e8e-47ba-a06b-74feb3a182b6",
+    "userId": "1027740701250162689",
+    "username": "sysadmin"
+  }
+}

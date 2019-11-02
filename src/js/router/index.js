@@ -1,20 +1,28 @@
 /* global VueRouter */
-const Home = () => import(/* webpackChunkName: "Home" */ 'pages/home')
-const About = () => import(/* webpackChunkName: "Home" */ 'pages/about')
-const ErrorPage = () => import(/* webpackChunkName: "Error" */ 'pages/error')
+
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import { WEB_TITLE_PREFIX } from 'common/consts'
+import baseRoutes from './base'
+import sysRoutes from './sys'
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/#/', component: Home },
-  { path: '/home', component: Home },
-  { path: '/about', component: About },
-  { path: '*', component: ErrorPage }
+  ...baseRoutes,
+  ...sysRoutes
 ]
 const router = new VueRouter({ routes })
 
 router.beforeEach((to, from, next) => {
   document.body.scrollTop = 0
+  NProgress.start();
+  if (to.meta.title) {
+    document.title = `${to.meta.title} | ${WEB_TITLE_PREFIX}`
+  }
   next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
 })
 
 export default router

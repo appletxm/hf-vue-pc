@@ -1,70 +1,80 @@
 <template>
-  <div :class="[$store.state.appPrefix + '-my-app']">
-    <navigator></navigator>
-    <div :class="[$store.state.appPrefix + '-module-all']">
-      <router-view></router-view>
-    </div>
-    <el-dialog
-      title="请登录"
-      :visible.sync="isPopLoginShow"
-      width="40%"
+  <hf-ui-layout type="sidebar" :class="[$store.state.appPrefix + '-my-app']" v-loading="isInitiApp">
+    <hf-ui-header>
+      <page-header></page-header>
+    </hf-ui-header>
+    <hf-ui-layout>
+      <hf-ui-aside width="200px">
+        <Left-bar />
+      </hf-ui-aside>
+      <div class="aside-right">
+        <hf-ui-layout :min-width="minWidth">
+          <page-bread-crumb class="hf-ui-breadcrumb" />
+          <hf-ui-main :class="[$store.state.appPrefix + '-module-all']">
+            <router-view />
+          </hf-ui-main>
+        </hf-ui-layout>
+      </div>
+    </hf-ui-layout>
+    <login-box
+      v-show="$store.state.needShowLoginPop"
     >
-      <user-login
-        :close-cb="closeLoginCb"
-        :success-cb="loginSuccessCb"
-      ></user-login>
-    </el-dialog>
-  </div>
+    </login-box>
+  </hf-ui-layout>
 </template>
 
 <script>
-import navigator from 'components/navigator'
-import userLogin from 'components/user-login'
-import {
-  checkUserLogin
-} from 'common/auth'
-import {
-  NAVIGATOR_LIST,
-  NEED_SHOW_LOGIN_POP
-} from 'store/mutation-types'
-import {
-  getNavigatorList,
-  runEventQueue
-} from './models'
+import LoginBox from 'components/login-pop'
+import PageHeader from 'components/header'
+import LeftBar from 'components/leftbar'
+import PageBreadCrumb from 'components/bread-crumb'
+import { getUserInfoFromCache, isAdmin, getAuthList, getWebMenuTree } from './models'
+import { USER_INFO, IS_ADMIN, STORE_AUTH, MENU_LIST } from 'store/mutation-types'
+import { checkUserLogin } from 'common/auth'
+import messager from 'common/messager'
+import { listToTree } from 'utils/tree'
 
 export default {
   components: {
-    navigator,
-    userLogin
+    LoginBox,
+    PageHeader,
+    LeftBar,
+    PageBreadCrumb
   },
   data() {
     return {
-      isPopLoginShow: false,
-      dialogVisible: true
+      isInitiApp: false
     }
   },
-  watch: {
-    // '$store.state.needShowLoginPop'(val) {
-    //   console.info('====', val)
-    // }
-  },
+  watch: {},
   created() {
-    const navigatorList = getNavigatorList()
-    this.$store.commit(NAVIGATOR_LIST, navigatorList)
-    if (!checkUserLogin()) {
-      this.$store.commit(NEED_SHOW_LOGIN_POP, true)
-      this.isPopLoginShow = true
+    if (checkUserLogin() !== true) {
+      this.$store.state.needShowLoginPop = true
+    } else {
+      this.$initApp()
     }
   },
   mounted() {},
   methods: {
-    closeLoginCb() {
-      this.isPopLoginShow = false
-    },
-    loginSuccessCb() {
-      this.$store.commit(NEED_SHOW_LOGIN_POP, false)
-      this.closeLoginCb()
-      runEventQueue(this.$route)
+    $initApp() {
+      this.isInitiApp = true
+      const userInfo = getUserInfoFromCache()
+      this.$store.commit(USER_INFO, userInfo)
+      Promise.all([
+        isAdmin(),
+        getAuthList(),
+        getWebMenuTree()
+      ]).then(res => {
+        this.isInitiApp = false
+        const menuList = listToTree(res[2]['data'])
+        this.$store.commit(IS_ADMIN, res[0]['data'])
+        this.$store.commit(STORE_AUTH, res[1]['data'])
+        this.$store.commit(MENU_LIST, menuList)
+      }).catch(err => {
+        this.isInitiApp = false
+        console.info('$initApp err:', err)
+        messager.showMsg('warning', err.retDesc || err)
+      })
     }
   }
 }

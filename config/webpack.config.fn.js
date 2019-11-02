@@ -18,7 +18,13 @@ module.exports = {
     } else if (envKeyWord === 'test') {
       envCfg = 'env-test'
     } else {
-      envCfg = 'env-production'
+      if ((process.argv)[3] && ((process.argv)[3] === 'test' || (process.argv)[4] === 'current-branch')) {
+        envCfg = 'env-test'
+      } else if ((process.argv)[3] && (process.argv)[3] === 'pre') {
+        envCfg = 'env-pre'
+      } else {
+        envCfg = 'env-production'
+      }
     }
 
     envFilePath = path.join(__dirname, './' + envCfg + '.js')
@@ -27,13 +33,16 @@ module.exports = {
 
   getOutPutConfig: function (envKeyWord, env, webpackConfig) {
     const appJs = path.resolve(env.sourcePath + '/js/index.js')
+    const loginJs = path.resolve(env.sourcePath + '/js/pages/login/index.js')
     const isDev = envKeyWord === 'development' || envKeyWord === 'mock'
 
     if (isDev === true) {
       webpackConfig.entry.app = [hotMiddlewareScript, appJs]
+      webpackConfig.entry.login = [hotMiddlewareScript, loginJs]
       webpackConfig.devtool = 'inline-source-map'
     } else {
       webpackConfig.entry.app = [appJs]
+      webpackConfig.entry.login = [loginJs]
       webpackConfig.devtool = 'cheap-source-map'
     }
 
@@ -98,18 +107,19 @@ module.exports = {
   },
 
   getPluginConfig: function (envKeyWord, webpack, webpackConfig, env) {
-    var cssPath, cssChunkPath
+    var cssPath
+    // cssChunkPath
     const isDev = envKeyWord === 'development' || envKeyWord === 'mock'
 
     if (isDev === true) {
       cssPath = 'css/[name].css'
-      cssChunkPath = 'css/[id].css'
+      // cssChunkPath = 'css/[id].css'
       webpackConfig.plugins.push(
         new webpack.HotModuleReplacementPlugin()
       )
     } else {
       cssPath = 'css/[name].min.[contenthash:7].css'
-      cssChunkPath = 'css/[id].min.[chunkhash:7].css'
+      // cssChunkPath = 'css/[id].min.[chunkhash:7].css'
 
       webpackConfig.plugins.push(
         new webpack.optimize.OccurrenceOrderPlugin()
@@ -121,10 +131,15 @@ module.exports = {
         from: path.resolve(env.sourcePath + '/assets'),
         to: path.resolve(env.distPath + '/assets')
       }]),
+
+      new CopyPlugin([{
+        from: path.resolve('./cfg.js'),
+        to: path.resolve(env.distPath + '/js/cfg.js')
+      }]),
       
       new MiniCssExtractPlugin({
         filename: cssPath
-        // ,chunkFilename: cssChunkPath
+        // chunkFilename: cssChunkPath
       })
     )
 
@@ -171,7 +186,7 @@ module.exports = {
   getHtmlWebPluginConfig: function (env, webpackConfig) {
     const { css, javascript } = this.getCssJsFile()
     var baseConfig = {
-      favicon: '',
+      favicon: path.resolve('favicon.ico'),
       inject: 'body',
       publicPath: env.publicPath,
       libFiles: {
@@ -181,11 +196,19 @@ module.exports = {
     }
     webpackConfig.plugins.push(
       new HtmlWebPlugin(Object.assign(baseConfig, {
-        title: '我是首页',
+        title: '首页',
         filename: path.resolve(env.distPath + '/app.html'),
         template: path.resolve(env.sourcePath + '/index.ejs'),
         chunks: ['vendor', 'runtime', 'app'],
-        inject: 'body',
+        needViewPort: false,
+        inject: 'body'
+      })),
+
+      new HtmlWebPlugin(Object.assign(baseConfig, {
+        title: '请登录',
+        filename: path.resolve(env.distPath + '/login.html'),
+        template: path.resolve(env.sourcePath + '/index.ejs'),
+        chunks: ['vendor', 'runtime', 'login'],
         needViewPort: false,
         inject: 'body'
       }))

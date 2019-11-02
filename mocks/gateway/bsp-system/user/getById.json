@@ -1,0 +1,36 @@
+{
+  "retCode": "000000",
+  "retDesc": "操作成功",
+  "data": {
+    "id": "1127745116304252930",
+    "username": "gemma",
+    "truename": "gemma",
+    "mobile": null,
+    "email": null,
+    "idCard": null,
+    "studentNum": null,
+    "wechat": null,
+    "openid": null,
+    "qqNum": null,
+    "birthday": null,
+    "gender": null,
+    "areaId": null,
+    "address": null,
+    "userStatus": "0",
+    "userExt": [{
+      "id": "1153513255248293889",
+      "userType": "1",
+      "authStatus": "1",
+      "orgId": null,
+      "version": 0
+    }, {
+      "id": "1153513255277654018",
+      "userType": "1",
+      "authStatus": "1",
+      "orgId": null,
+      "version": 0
+    }],
+    "role": ["1102769929191186434", "1102769929191186434"],
+    "version": 0
+  }
+}
