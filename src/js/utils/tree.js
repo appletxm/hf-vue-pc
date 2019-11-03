@@ -32,14 +32,10 @@ export const listToTree = function listToTree(data, sOptions) {
     item = list[i];
     id = item[ID_KEY];
     parentId = item[PARENT_KEY] || '0';
-    // every item may have children
     childrenOf[id] = childrenOf[id] || [];
-    // init its children
     item[CHILDREN_KEY] = childrenOf[id];
     if (parentId !== '0' && parentId !== '') {
-      // init its parent's children object
       childrenOf[parentId] = childrenOf[parentId] || [];
-      // push it into its parent's children object
       childrenOf[parentId].push(item);
     } else {
       tree.push(item);

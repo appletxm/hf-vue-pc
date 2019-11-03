@@ -109,7 +109,7 @@ export default {
     },
 
     init() {
-      console.log('init', this.$route)
+      // console.log('init', this.$route)
       // this.curPath = this.$route.matched[0].path;
     },
   },

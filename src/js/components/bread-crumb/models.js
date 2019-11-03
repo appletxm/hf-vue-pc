@@ -30,6 +30,10 @@ export function matchBreadData(currentPath, menuData) {
 
   doMathId(matchedItemObj, menuData, currentPath)
 
+  if (matchedItemObj.length <= 1) {
+    return matchedData
+  }
+
   const parentId = matchedItemObj[0]['parentId']
   matchedData.push(matchedItemObj[0])
 

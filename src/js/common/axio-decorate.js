@@ -47,12 +47,16 @@ export function decorate() {
       }
     }
   }, function (error) {
-    const { status, data } = error.response
-    if (errorHandler.errorCodeMatch[status]) {
-      errorHandler.errorCodeMatch[status](data)
+    if (error.response) {
+      const { status, data } = error.response
+      if (status && errorHandler.errorCodeMatch[status]) {
+        errorHandler.errorCodeMatch[status](data)
+      } else {
+        // return Promise.reject(error)
+        throw error
+      }
     } else {
-      // return Promise.reject(resData)
-      throw resData
+      throw error
     }
   })
 }

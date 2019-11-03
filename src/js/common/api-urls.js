@@ -13,5 +13,6 @@ export default {
   getUserInfo: `${bspSys}/user/userInfo`,
   isAdmin: `${bspDataSync}/user/isAdmin`,
   getAuthList: `${bspSys}/menu/userPermission`,
-  getWebMenuTree: `${bspSys}/menu/backEnd/listTree`
+  getWebMenuTree: `${bspSys}/menu/backEnd/listTree`,
+  getMenuList: `${bspSys}/menu/backEnd/listTree`
 }

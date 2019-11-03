@@ -94,6 +94,7 @@ function assignRouter(req, res, next) {
 
   if (process.env.NODE_ENV === 'mock') {
     isMock = true
+    reqPath = reqPath.replace(/\?.+$/, '')
     console.log('mock reqPath', reqPath)
     getMockFile(reqPath + '.json', res)
   }
