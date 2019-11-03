@@ -43,7 +43,7 @@ module.exports = {
     } else {
       webpackConfig.entry.app = [appJs]
       webpackConfig.entry.login = [loginJs]
-      webpackConfig.devtool = 'cheap-source-map'
+      // webpackConfig.devtool = 'cheap-source-map'
     }
 
     return webpackConfig
@@ -81,12 +81,12 @@ module.exports = {
           name: true,
           chunks: 'all',
           cacheGroups: {
-            // styles: {
-            //   name: 'styles',
-            //   test: /\.(scss|css)$/,
-            //   chunks: 'all',
-            //   enforce: true,
-            // },
+            styles: {
+              name: 'styles',
+              test: /\.(scss|css)$/,
+              chunks: 'all',
+              enforce: true,
+            },
             vendor: {
               name: 'vendor',
               chunks: 'initial',
@@ -107,8 +107,8 @@ module.exports = {
   },
 
   getPluginConfig: function (envKeyWord, webpack, webpackConfig, env) {
-    var cssPath
-    // cssChunkPath
+    let cssPath
+    // let cssChunkPath
     const isDev = envKeyWord === 'development' || envKeyWord === 'mock'
 
     if (isDev === true) {
@@ -199,7 +199,7 @@ module.exports = {
         title: '首页',
         filename: path.resolve(env.distPath + '/app.html'),
         template: path.resolve(env.sourcePath + '/index.ejs'),
-        chunks: ['vendor', 'runtime', 'app'],
+        chunks: ['styles', 'vendor', 'runtime', 'app'],
         needViewPort: false,
         inject: 'body'
       })),
@@ -208,7 +208,7 @@ module.exports = {
         title: '请登录',
         filename: path.resolve(env.distPath + '/login.html'),
         template: path.resolve(env.sourcePath + '/index.ejs'),
-        chunks: ['vendor', 'runtime', 'login'],
+        chunks: ['styles', 'vendor', 'runtime', 'login'],
         needViewPort: false,
         inject: 'body'
       }))

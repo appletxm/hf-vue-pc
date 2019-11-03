@@ -10,5 +10,9 @@ module.exports = {
   },
   distPath: './dist',
   sourcePath: './src',
-  isMock: true
+  isMock: true,
+  outputCfg: {
+    apiHost: 'http://127.0.0.1:9000',
+    withCredentials: false
+  }
 }

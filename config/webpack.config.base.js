@@ -22,13 +22,12 @@ module.exports = function (envKeyWord, env) {
     },
     module: {
       rules: [
-        // {
-        //   enforce: 'pre',
-        //   test: /\.(js|vue)$/,
-        //   loader: 'eslint-loader',
-        //   exclude: /node_modules/
-        // },
-        
+        {
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/
+        },
         {
           test: /\.js$/,
           loader: 'babel-loader',
@@ -38,7 +37,7 @@ module.exports = function (envKeyWord, env) {
           test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
           loader: 'url-loader',
           options: {
-            limit: 8192,
+            limit: 4096,
             context: 'client',
             name: isDev ? '[path][name].[ext]' : 'assets/images/[name].[ext]',
             outputPath: isDev ? '' : 'assets/images/',
@@ -49,7 +48,7 @@ module.exports = function (envKeyWord, env) {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           loader: 'url-loader',
           options: {
-            limit: 8192,
+            limit: 4096,
             context: 'client',
             name: isDev ? '[path][name].[ext]' : 'assets/fonts/[name].[hash:7].[ext]',
             outputPath: isDev ? '' : 'assets/fonts/',

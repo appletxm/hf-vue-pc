@@ -9,5 +9,9 @@ module.exports = {
     return 'http://' + this.host + ':' + this.port + '/dist/'
   },
   distPath: './dist',
-  sourcePath: './src'
+  sourcePath: './src',
+  outputCfg: {
+    apiHost: 'http://192.168.10.189:6020',
+    withCredentials: false
+  }
 }
